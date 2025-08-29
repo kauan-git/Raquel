@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Raquel, amor in my life</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fce4ec;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px; /* Reduzi um pouco o espaçamento geral para melhor visual */
+        }
+
+        .salutation {
+            font-size: 1.8em;
+            color: #e91e63;
+            font-weight: 700;
+            margin: 0 0 -10px 0; /* Ajustei a margem para ficar mais próximo da instrução */
+        }
+
+        .instruction {
+            font-size: 1.5em;
+            color: #d81b60;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .heart {
+            width: 120px;
+            height: 110px;
+            background-color: #e91e63;
+            position: relative;
+            transform: rotate(-45deg);
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            width: 120px;
+            height: 110px;
+            background-color: #e91e63;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .heart:before {
+            top: -60px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 60px;
+            top: 0;
+        }
+
+        .heart:hover {
+            transform: rotate(-45deg) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .message-container {
+            perspective: 1000px;
+        }
+
+        .message {
+            font-size: 5em;
+            color: #d81b60;
+            font-weight: 800;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: scale(0.5) rotateX(90deg);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            letter-spacing: 5px;
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: scale(1) rotateX(0deg);
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.05); }
+            100% { transform: rotate(-45deg) scale(1); }
+        }
+
+        .heart {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @media (max-width: 600px) {
+            .heart {
+                width: 90px;
+                height: 80px;
+            }
+            .heart:before,
+            .heart:after {
+                width: 90px;
+                height: 80px;
+            }
+            .heart:before {
+                top: -45px;
+            }
+            .heart:after {
+                left: 45px;
+            }
+            .message {
+                font-size: 3em;
+            }
+            .salutation {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Nova frase adicionada aqui -->
+        <h2 class="salutation">De Kauan para Raquel, amor de my life</h2>
+        <p class="instruction">Clique no coração</p>
+        <div class="heart" id="heart"></div>
+        <div class="message-container">
+            <h1 class="message" id="message">
+                EU TE AMO
+            </h1>
+        </div>
+    </div>
+
+    <script>
+        const heart = document.getElementById('heart');
+        const message = document.getElementById('message');
+
+        heart.addEventListener('click', () => {
+            message.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
